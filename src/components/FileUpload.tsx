@@ -44,7 +44,7 @@ export const FileUpload = ({ onFileProcessed, currentFile, onRemoveFile }: FileU
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch('/api/process-file', {
+      const response = await fetch('https://wcjfsahllohlmdwfytwl.supabase.co/functions/v1/process-file', {
         method: 'POST',
         body: formData,
       });

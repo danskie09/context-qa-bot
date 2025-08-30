@@ -57,14 +57,14 @@ export const ChatInterface = ({ fileId }: ChatInterfaceProps) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch('https://wcjfsahllohlmdwfytwl.supabase.co/functions/v1/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           question: userMessage.content,
-          fileId,
+          fileContent: 'Document content will be provided here from the processed file',
         }),
       });
 
@@ -77,7 +77,7 @@ export const ChatInterface = ({ fileId }: ChatInterfaceProps) => {
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'ai',
-        content: result.answer,
+        content: result.response,
         timestamp: new Date(),
       };
 
